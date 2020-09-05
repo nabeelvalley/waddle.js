@@ -11,7 +11,7 @@ class PreconfiguredLogger {
   constructor() {
     this.log = createColouredLog(Colour.Reset, LogLevel.Log)
     this.info = createColouredLog(Colour.FgGreen, LogLevel.Info)
-    this.warn = createColouredLog(Colour.BgYellow, LogLevel.Log)
+    this.warn = createColouredLog(Colour.BgMagenta, LogLevel.Log)
     this.error = createColouredLog(Colour.BgRed, LogLevel.Error)
   }
 }

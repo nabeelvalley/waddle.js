@@ -3,6 +3,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
+    "test": "node build/tests/index.js",
     "watch": "tsc --watch"
   },
   "devDependencies": {

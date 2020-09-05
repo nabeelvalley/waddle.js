@@ -13,7 +13,7 @@ class Counter {
    * Lap the counter
    * @param label
    */
-  lap(label?: string) {
+  lap(label?: string): void {
     const time = new Date()
     const lap: Lap = {
       label,
@@ -23,24 +23,38 @@ class Counter {
     this._laps.push(lap)
   }
 
-  stop() {
+  /**
+   * Stop the counter, and return the start/stop runtime in ms. Returns the
+   * counter instance
+   */
+  stop(): Counter {
     if (typeof this._stopTime === 'undefined') {
       this._stopTime = new Date()
     }
+    return this
+  }
+
+  /**
+   * Get start/stop run duration in milliseconds
+   */
+  getDuration(): number | undefined {
+    if (typeof this._stopTime !== 'undefined')
+      return this._stopTime.getTime() - this.startTime.getTime()
+    else return undefined
   }
 
   private _startTime: Date
-  public get startTime() {
+  public get startTime(): Date {
     return this._startTime
   }
 
   private _stopTime?: Date
-  public get stopTime() {
+  public get stopTime(): Date | undefined {
     return this._stopTime
   }
 
   private _laps: Lap[] = []
-  public get laps() {
+  public get laps(): Lap[] {
     return this._laps
   }
 }

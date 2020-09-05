@@ -1,15 +1,11 @@
-import AssertionResult from '../interfaces/AssertionResult'
+import isFalse from './isFalse'
 
 /**
  * Will return a pass if `actual` is falsey
  * @param actual
  */
-const isFalsy = <T = any>(actual: T): AssertionResult => {
-  const result = !actual
-
-  return {
-    passed: result,
-  }
+const isFalsy = <T = any>(actual: T) => {
+  isFalse(!!actual)
 }
 
 export default isFalsy

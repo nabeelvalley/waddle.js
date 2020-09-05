@@ -1,15 +1,11 @@
-import AssertionResult from '../interfaces/AssertionResult'
+import assert from 'assert'
 
 /**
  * Will return a pass if `actual` is false
  * @param actual
  */
-const isFalse = (actual: boolean): AssertionResult => {
-  const result = actual === false
-
-  return {
-    passed: result,
-  }
+const isFalse = (actual: boolean) => {
+  assert.strictEqual(actual, false)
 }
 
 export default isFalse

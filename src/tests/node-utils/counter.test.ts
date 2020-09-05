@@ -9,6 +9,7 @@ test('counter start/stop', () => {
   assert.isDefined(sut.stopTime)
   assert.isEqual(sut.laps.length, 0)
   assert.isEmptyArray(sut.laps)
+  assert.isGreaterThan(sut.getDuration(), 0)
 })
 
 test('counter laps', () => {
@@ -17,6 +18,21 @@ test('counter laps', () => {
 
   assert.isNonEmptyArray(sut.laps)
   assert.isEqual(sut.laps.length, 1)
+})
+
+test('timer run duration', () => {
+  const sut = new Counter()
+
+  const duration = 2000
+
+  const d = new Date().getTime() + duration
+  while (new Date().getTime() <= d) {}
+
+  sut.stop()
+
+  const actual = sut.getDuration()
+
+  assert.isGreaterThanOrEqual(actual, duration)
 })
 
 export default 'counter-test'
