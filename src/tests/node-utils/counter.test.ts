@@ -1,5 +1,5 @@
-import { test, assert } from '@node-test'
-import { Counter } from '@node-utils'
+import { test, assert } from '../../node-test'
+import { Counter } from '../../node-utils'
 
 test('counter start/stop', () => {
   const sut = new Counter()

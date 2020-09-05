@@ -1,4 +1,4 @@
-import { test } from '@node-test'
+import { test } from '../../node-test'
 
 test('throws error', () => {
   throw new Error('this test is meant to fail')

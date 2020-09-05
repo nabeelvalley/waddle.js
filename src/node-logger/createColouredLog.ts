@@ -1,4 +1,4 @@
-import Colour from './enums/Colour'
+import { Colour, LogLevel } from './enums'
 import SingleLogger from './interfaces/SingleLogger'
 
 /**
