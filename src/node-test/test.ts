@@ -1,8 +1,14 @@
+import { createColouredLog, PreconfiguredLogger } from "@node-logger"
+
+const log = new PreconfiguredLogger()
+
 const test = (label: string, run: () => void) => {
     try {
         run()
+        log.info(`test passed: ${label}`)
     } catch (error) {
-        createColouredLog()
+        log.error(`test failed: ${label}`)
+        log.error(error)
     }
 }
 

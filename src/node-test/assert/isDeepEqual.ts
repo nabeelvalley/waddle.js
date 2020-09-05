@@ -1,14 +1,12 @@
 import assert, { AssertionError } from 'assert'
 
-import AssertionResult from '../types/AssertionResult'
+import AssertionResult from '../interfaces/AssertionResult'
 
 /**
  * Will return a pass if the assertion is strictly deep equal
  * @param actual
  */
-const isDeepEqual = <T>(actual: T, expected: T): AssertionResult => {
-  let result: boolean
-
+const isDeepEqual = <T = any>(actual: T, expected: T): AssertionResult => {
   try {
     assert.deepStrictEqual<T>(actual, expected)
     return {

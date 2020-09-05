@@ -1,14 +1,12 @@
 import assert, { AssertionError } from 'assert'
 
-import AssertionResult from '../types/AssertionResult'
+import AssertionResult from '../interfaces/AssertionResult'
 
 /**
  * Will return a pass if the assertion is strictly equal
  * @param actual
  */
-const isEqual = <T>(actual: T, expected: T): AssertionResult => {
-  let result: boolean
-
+const isEqual = <T = any>(actual: T, expected: T): AssertionResult => {
   try {
     assert.strictEqual<T>(actual, expected)
     return {

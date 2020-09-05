@@ -1,4 +1,5 @@
 import Colour from './enums/Colour'
+import SingleLogger from './interfaces/SingleLogger'
 
 /**
  * Returns a `console.log` equivalent that can print to console in the given
@@ -9,7 +10,7 @@ import Colour from './enums/Colour'
 const createColouredLog = (
   colour: Colour = Colour.Reset,
   logLevel: LogLevel = LogLevel.Log
-) => {
+): SingleLogger => {
   return (...data: any[]) =>
     console[logLevel](`${colour}%s${Colour.Reset}`, ...data)
 }

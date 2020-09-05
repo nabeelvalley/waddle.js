@@ -1,10 +1,10 @@
-import AssertionResult from '../types/AssertionResult'
+import AssertionResult from '../interfaces/AssertionResult'
 
 /**
  * Will return a pass if `actual` is true
- * @param actual 
+ * @param actual
  */
-const isTrue = (actual: any): AssertionResult => {
+const isTrue = (actual: boolean): AssertionResult => {
   const result = actual === true
 
   return {

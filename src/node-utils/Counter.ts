@@ -1,4 +1,4 @@
-import Lap from './Types/Lap'
+import Lap from './interfaces/Lap'
 import { start } from 'repl'
 
 class Counter {
@@ -6,7 +6,7 @@ class Counter {
    * Create a `Counter` instance and start the timer
    */
   constructor() {
-    this._startTime = new Date() 
+    this._startTime = new Date()
   }
 
   /**
