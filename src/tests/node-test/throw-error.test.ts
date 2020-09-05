@@ -1,6 +1,6 @@
 import { test } from '../../node-test'
 
-test('throws error', () => {
+test('(should fail) throws error', () => {
   throw new Error('this test is meant to fail')
 })
 

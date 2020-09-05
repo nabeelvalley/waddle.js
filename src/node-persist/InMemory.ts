@@ -6,9 +6,11 @@ import createCollection from './createCollection'
  */
 class InMemory<T> implements Collection<T> {
   constructor(key: string) {
-    let store: InMemory<T> | undefined = global.__node_persist__[key]
+    if (typeof global?.__node_persist__ === 'undefined') {
+      global.__node_persist__ = {}
+    }
 
-    if (typeof store === 'undefined') {
+    if (typeof global?.__node_persist__[key] === 'undefined') {
       const collection = createCollection<T>()
 
       this.getOne = collection.getOne
@@ -22,6 +24,8 @@ class InMemory<T> implements Collection<T> {
 
       global.__node_persist__[key] = this
     } else {
+      const store: InMemory<T> = global.__node_persist__[key]
+
       this.getOne = store.getOne
       this.getAll = store.getAll
       this.insertOne = store.insertOne

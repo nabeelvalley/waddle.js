@@ -6,13 +6,13 @@ const log = new PreconfiguredLogger()
 const test = (label: string, run: () => void) => {
   const counter = new Counter()
 
-  log.info(`${getHorizontalLine()}\nstarting: ${label}`)
+  log.info(`${getHorizontalLine()}\n[start]: ${label}`)
 
   try {
     run()
-    log.success(`${counter.stop().getDuration()} ms\t passed: ${label}`)
+    log.success(`[pass]: ${counter.stop().getDuration()} ms\t  ${label}`)
   } catch (error) {
-    log.error(`${counter.stop().getDuration()} ms\t failed: ${label}`)
+    log.error(`[fail]: ${counter.stop().getDuration()} ms\t  ${label}`)
     log.log(error)
   }
 }
