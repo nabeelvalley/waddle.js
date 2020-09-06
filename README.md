@@ -30,7 +30,7 @@ test('my-test: compare some strings', () => {
 })
 ```
 
-Next, creat an `index.ts` file in the `tests` directory which just imports all
+Next, create an `index.ts` file in the `tests` directory which just imports all
 your tests
 
 `src/tests/index.ts`
