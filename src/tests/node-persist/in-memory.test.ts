@@ -19,3 +19,15 @@ test('in-memory-db persists across instances', () => {
   assert.isEqual(sut1.getOne(0), testStr)
   assert.isEqual(sut2.getOne(0), testStr)
 })
+
+test('in-memory-db updates for primitives', () => {
+  const key: string = Math.random().toString()
+  const testStr: string = 'TEST'
+
+  const sut = new InMemory<string>(key)
+  sut.insertOne('INIT')
+
+  sut.updateOne(0, testStr)
+
+  assert.isDeepEqual(sut.getOne(0), testStr)
+})

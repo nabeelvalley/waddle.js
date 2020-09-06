@@ -1,4 +1,5 @@
 import Collection from './interfaces/Collection'
+import { isPrimitive } from '../node-utils'
 
 /**
  * Creates a collection in which elements can only be inserted and updated,
@@ -17,7 +18,12 @@ const createCollection = <T>(): Collection<T> => {
       collection.push(...items)
     },
     updateOne: (index: number, item: Partial<T>) => {
-      collection[index] = { ...collection[index], ...item }
+      if (isPrimitive(item)) {
+        collection[index] = item as T
+      } else {
+        collection[index] = { ...collection[index], ...item }
+      }
+
       return collection[index]
     },
     findMany: (predicate: (item: T) => boolean) => {

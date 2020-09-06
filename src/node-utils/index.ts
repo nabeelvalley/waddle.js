@@ -1,4 +1,5 @@
 export { default as Counter } from './Counter'
 export { default as getRandomInt } from './getRandomInt'
 export { default as getRandomNumber } from './getRandomNumber'
+export { default as isPrimitive } from './isPrimitive'
 export * as interfaces from './interfaces'
