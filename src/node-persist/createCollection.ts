@@ -16,7 +16,7 @@ const createCollection = <T>(): Collection<T> => {
     insertMany: (items: T[]) => {
       collection.push(...items)
     },
-    updateOne: (index: number, item: T) => {
+    updateOne: (index: number, item: Partial<T>) => {
       collection[index] = { ...collection[index], ...item }
       return collection[index]
     },

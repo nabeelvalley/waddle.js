@@ -6,4 +6,4 @@ test('(should fail) object comparison fails', () => {
   assert.isDeepEqual(actual, expected)
 })
 
-export default 'throw-error-test'
+export default 'object-comparison tests'
