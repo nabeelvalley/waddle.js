@@ -6,7 +6,7 @@ common tasks in Node.js or the browser
 ## Node-Test
 
 A unit testing libary that can test collections. Based on the built-in Node.JS
-`assert` module
+`assert` module. Can test `sync` and `async` code
 
 ## Node-Persist
 

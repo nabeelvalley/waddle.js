@@ -18,7 +18,7 @@ const logTestStatus = (status: TestStatus) => {
   }
 
   if (typeof status.duration === 'undefined')
-    log(`[${prefix}]:\t  ${status.name}`)
+    log(`[${prefix}]: \t  ${status.name}`)
   else log(`[${prefix}]: ${status.duration} ms\t  ${status.name}`)
 }
 

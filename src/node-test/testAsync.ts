@@ -6,26 +6,32 @@ import updateTestResult from './updateTestResult'
 const log = new PreconfiguredLogger()
 
 /**
- * Used to run a test, use `testAsync` to test async code
+ * Used to test an async function. Will wait for `run` to complete, use `test`
+ * to test sync code
  * @param label
  * @param run
  */
-const test = (label: string, run: () => void) => {
+const testAsync = async (label: string, run: () => Promise<void>) => {
   const counter = new Counter()
 
   registerTestResult(label)
-
-  log.info(`${getHorizontalLine()}\n[start]: ${label}`)
+  const logLine = () => {
+    log.info(`${getHorizontalLine()}`)
+  }
 
   try {
-    run()
+    await run()
     counter.stop()
+    logLine()
+    log.info(`[pass]: ${label}`)
     updateTestResult(label, true, counter.getDuration())
   } catch (error) {
+    logLine()
+    log.error(`[fail]: ${label}`)
     log.log(error)
     counter.stop()
     updateTestResult(label, false, counter.getDuration())
   }
 }
 
-export default test
+export default testAsync
