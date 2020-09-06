@@ -1,5 +1,3 @@
-import isDeepEqual from './isDeepEqual'
-import { arr } from '../empty'
 import isGreaterThan from './isGreaterThan'
 
 /**

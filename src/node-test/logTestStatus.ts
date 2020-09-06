@@ -1,6 +1,6 @@
 import TestStatus from './interfaces/TestStatus'
 import SingleLogger from '../node-logger/interfaces/SingleLogger'
-import { PreconfiguredLogger, getHorizontalLine } from '../node-logger'
+import { PreconfiguredLogger } from '../node-logger'
 
 const logTestStatus = (status: TestStatus) => {
   const logger = new PreconfiguredLogger()

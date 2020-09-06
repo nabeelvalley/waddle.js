@@ -2,18 +2,17 @@ import { InMemory } from '../node-persist'
 import TestStatus from './interfaces/TestStatus'
 import Constant from './enums/Constant'
 import printTestSummary from './printTestSummary'
-import logTestStatus from './logTestStatus'
 
-const updateTestResult = (name: string, result: boolean, duration?: number) => {
+const updateTestResult = (statusUpdate: TestStatus) => {
   const db = new InMemory<TestStatus>(Constant.persistKey)
 
-  const index = db.findIndex(t => t.name === name)
+  const index = db.findIndex(t => t.name === statusUpdate.name)
 
   if (typeof index !== 'undefined') {
-    db.updateOne(index, { result, duration })
+    db.updateOne(index, statusUpdate)
     printTestSummary()
   } else {
-    throw new Error(`Test with name ${name} not found`)
+    throw new Error(`Test with name ${statusUpdate.name} not found`)
   }
 }
 

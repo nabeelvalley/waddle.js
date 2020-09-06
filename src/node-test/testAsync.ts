@@ -8,13 +8,13 @@ const log = new PreconfiguredLogger()
 /**
  * Used to test an async function. Will wait for `run` to complete, use `test`
  * to test sync code
- * @param label
+ * @param name
  * @param run
  */
-const testAsync = async (label: string, run: () => Promise<void>) => {
+const testAsync = async (name: string, run: () => Promise<void>) => {
   const counter = new Counter()
 
-  registerTestResult(label)
+  registerTestResult(name)
   const logLine = () => {
     log.info(`${getHorizontalLine()}`)
   }
@@ -23,14 +23,19 @@ const testAsync = async (label: string, run: () => Promise<void>) => {
     await run()
     counter.stop()
     logLine()
-    log.info(`[pass]: ${label}`)
-    updateTestResult(label, true, counter.getDuration())
+    log.info(`[pass]: ${name}`)
+    updateTestResult({ name, result: true, duration: counter.getDuration() })
   } catch (error) {
     logLine()
-    log.error(`[fail]: ${label}`)
+    log.error(`[fail]: ${name}`)
     log.log(error)
     counter.stop()
-    updateTestResult(label, false, counter.getDuration())
+    updateTestResult({
+      name,
+      error,
+      result: false,
+      duration: counter.getDuration(),
+    })
   }
 }
 

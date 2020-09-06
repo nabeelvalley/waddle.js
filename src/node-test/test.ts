@@ -7,24 +7,29 @@ const log = new PreconfiguredLogger()
 
 /**
  * Used to run a test, use `testAsync` to test async code
- * @param label
+ * @param name
  * @param run
  */
-const test = (label: string, run: () => void) => {
+const test = (name: string, run: () => void) => {
   const counter = new Counter()
 
-  registerTestResult(label)
+  registerTestResult(name)
 
-  log.info(`${getHorizontalLine()}\n[start]: ${label}`)
+  log.info(`${getHorizontalLine()}\n[start]: ${name}`)
 
   try {
     run()
     counter.stop()
-    updateTestResult(label, true, counter.getDuration())
+    updateTestResult({ name, result: true, duration: counter.getDuration() })
   } catch (error) {
     log.log(error)
     counter.stop()
-    updateTestResult(label, false, counter.getDuration())
+    updateTestResult({
+      name,
+      error,
+      result: false,
+      duration: counter.getDuration(),
+    })
   }
 }
 

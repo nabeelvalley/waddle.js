@@ -1,5 +1,4 @@
 import Lap from './interfaces/Lap'
-import { start } from 'repl'
 
 class Counter {
   /**
