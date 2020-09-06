@@ -13,9 +13,9 @@ uses this to test the `waddle.js` repo
 
 ### Basic Usage
 
-To setup a test, create a directory from which to run tests with a test file in
-it. This can be any TS module and is automatically run when imported. Use the
-`test` function to run a test
+To setup a test using `node-test`, create a directory from which to run tests
+with a test file in it. This can be any TS module and is automatically run when
+imported. Use the `test` function to run a test
 
 `src/tests/my-test.ts`
 
@@ -73,13 +73,62 @@ console.log('get test status while runs are in progress', status)
 ## Node-Persist
 
 Basic data-storage mechanisms, currently supports an in-memory synchronouse DB
-with the plann to add support for an event-driven database with static file
+with the plan to add support for an event-driven database with static file
 persistence, import, and export and connectivity with more traditional databases
+
+### Usage
+
+To use the `node-persist` in-memory storage you can create an `InMemory`
+instance with a unique `key` to identify a collection. You can then use
+available functions on the `InMemory` class instance to access and work with
+data:
+
+```ts
+const db = new InMemory<MyDataType>('my-collection-key')
+db.insertOne({ name: 'test' })
+
+const allData = db.getAll()
+```
+
+You can create any other instances of the `InMemory` object and as long as you
+use the same `key` when initializing they will have access to the same data
 
 ## Node-Logger
 
 Colour based logging, currently supporting console with the plan to add
 file-based and database logging
+
+## Usage
+
+The `node-logger` provides functionality to create different loggers. You can
+create a logger that can log in a specific colour with the `createColouredLog`
+function:
+
+```ts
+const magentaLog = createColouredLog(Colour.BgMagenta, LogLevel.Log)
+```
+
+And can be used with:
+
+```ts
+magentaLog('stuff to log')
+```
+
+If you would like a logger that has basic `console` like interfaces use the
+`PreconfiguredLogger` class. You can create an instance of the logger like so:
+
+```ts
+const logger = new PreconfiguredLogger()
+```
+
+And then use it:
+
+```ts
+logger.log('log')
+logger.warn('warn')
+logger.info('info')
+logger.error('error')
+```
 
 ## Node-Utils
 
