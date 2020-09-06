@@ -11,6 +11,8 @@ A unit testing libary that can test collections. Based on the built-in Node.JS
 Usage of this library works (though not yet complete). The `src/tests` directory
 uses this to test the `waddle.js` repo
 
+### Basic Usage
+
 To setup a test, create a directory from which to run tests with a test file in
 it. This can be any TS module and is automatically run when imported. Use the
 `test` function to run a test
@@ -28,7 +30,27 @@ test('my-test: compare some strings', () => {
 })
 ```
 
-Next, define a `Runner` **before** importing the tests into an `index.ts` file:
+Next, creat an `index.ts` file in the `tests` directory which just imports all
+your tests
+
+`src/tests/index.ts`
+
+```ts
+// import tests
+import './my-test'
+// ... import other tests
+```
+
+Lastly - compile the Typescript as your project requires, then run the file. For
+example, based on the configuration of this repo you would need to run
+`node build/tests/index.js`
+
+### Advanced Usage
+
+If you'd like to track the test progress, define a `Runner` **before** importing
+the tests into an `index.ts` file. Then create a runner instance
+
+`src/tests/index.ts`
 
 ```ts
 // import test runner
