@@ -5,7 +5,7 @@ import isTrue from './isTrue'
  * @param actual
  */
 const isTruthy = (actual: any) => {
-  isTrue(!!true)
+  isTrue(!!actual)
 }
 
 export default isTruthy
