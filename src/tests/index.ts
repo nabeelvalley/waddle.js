@@ -7,6 +7,7 @@ const runner = new Runner(() => {
 })
 
 // import tests
+import './node-http/get.test'
 import './node-utils/counter.test'
 import './node-test/async-assertions.test'
 import './node-test/object-comparisons.test'
